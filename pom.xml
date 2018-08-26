@@ -14,6 +14,17 @@
     <name>Payment Processor Java Client</name>
     <description>TurnOnline.biz Ecosystem Payment Processor REST API Java Client</description>
 
+    <scm>
+        <connection>scm:git:[fetch=]git@github.com:turnonline/payment-processor-client.git</connection>
+        <developerConnection>scm:git:[push=]git@github.com:turnonline/payment-processor-client.git</developerConnection>
+        <url>https://github.com/turnonline/payment-processor-client</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/turnonline/payment-processor-client/issues</url>
+    </issueManagement>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
