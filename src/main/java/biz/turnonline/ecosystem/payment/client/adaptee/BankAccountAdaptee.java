@@ -63,7 +63,15 @@ public class BankAccountAdaptee
     @Override
     public Object prepareGet( @Nonnull Identifier identifier ) throws IOException
     {
-        return client().bankAccounts().get( identifier.getLong() );
+        String controller = identifier.getController();
+        if ( controller != null && controller.equalsIgnoreCase( "primary" ) )
+        {
+            return client().bankAccounts().primary().get();
+        }
+        else
+        {
+            return client().bankAccounts().get( identifier.getLong() );
+        }
     }
 
     @Override
@@ -118,7 +126,15 @@ public class BankAccountAdaptee
                                  @Nonnull Identifier identifier,
                                  @Nullable MediaProvider provider ) throws IOException
     {
-        return client().bankAccounts().update( identifier.getLong(), resource );
+        String controller = identifier.getController();
+        if ( controller != null && controller.equalsIgnoreCase( "primary" ) )
+        {
+            return client().bankAccounts().primary().update( identifier.getLong() );
+        }
+        else
+        {
+            return client().bankAccounts().update( identifier.getLong(), resource );
+        }
     }
 
     @Override
