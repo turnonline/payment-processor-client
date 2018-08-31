@@ -21,7 +21,6 @@ import biz.turnonline.ecosystem.payment.model.BankAccount;
 import biz.turnonline.ecosystem.payment.model.BankCode;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
-import com.google.inject.multibindings.Multibinder;
 import org.ctoolkit.restapi.client.adaptee.DeleteExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.GetExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.InsertExecutorAdaptee;
@@ -29,10 +28,13 @@ import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.UpdateExecutorAdaptee;
 import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
 
-import javax.inject.Singleton;
-
 /**
  * The payment processor guice default adaptee configuration.
+ * In order to have model mapped configure multibinder of {@link BeanMapperConfig}.
+ * <pre>
+ * Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
+ * multibinder.addBinding().to( PaymentProcessorMapperConfig.class ).in( Singleton.class );
+ * </pre>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */
@@ -71,8 +73,5 @@ public class PaymentProcessorAdapteeModule
         bind( new TypeLiteral<DeleteExecutorAdaptee<BankAccount>>()
         {
         } ).to( BankAccountAdaptee.class );
-
-        Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
-        multibinder.addBinding().to( PaymentProcessorMapperConfig.class ).in( Singleton.class );
     }
 }
