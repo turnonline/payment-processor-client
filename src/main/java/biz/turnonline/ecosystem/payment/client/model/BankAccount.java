@@ -23,7 +23,7 @@ import java.util.Objects;
 public class BankAccount
         implements Serializable
 {
-    private static final long serialVersionUID = -1908854288886488256L;
+    private static final long serialVersionUID = -6613539593001094701L;
 
     private Long id;
 
@@ -38,6 +38,8 @@ public class BankAccount
     private String iban;
 
     private String bic;
+
+    private String currency;
 
     private Boolean primary = false;
 
@@ -120,7 +122,7 @@ public class BankAccount
     }
 
     /**
-     * The formatted full bank account number.
+     * The formatted full bank account number incl. bank code.
      **/
     public BankAccount formatted( String formatted )
     {
@@ -174,6 +176,25 @@ public class BankAccount
     public void setBic( String bic )
     {
         this.bic = bic;
+    }
+
+    /**
+     * The bank account currency. An alphabetic code based on the ISO 4217.
+     **/
+    public BankAccount currency( String currency )
+    {
+        this.currency = currency;
+        return this;
+    }
+
+    public String getCurrency()
+    {
+        return currency;
+    }
+
+    public void setCurrency( String currency )
+    {
+        this.currency = currency;
     }
 
     /**
@@ -234,6 +255,7 @@ public class BankAccount
                 Objects.equals( formatted, bankAccount.formatted ) &&
                 Objects.equals( iban, bankAccount.iban ) &&
                 Objects.equals( bic, bankAccount.bic ) &&
+                Objects.equals( currency, bankAccount.currency ) &&
                 Objects.equals( primary, bankAccount.primary ) &&
                 Objects.equals( bank, bankAccount.bank );
     }
@@ -241,7 +263,7 @@ public class BankAccount
     @Override
     public int hashCode()
     {
-        return Objects.hash( id, name, prefix, accountNumber, formatted, iban, bic, primary, bank );
+        return Objects.hash( id, name, prefix, accountNumber, formatted, iban, bic, currency, primary, bank );
     }
 
     @Override
@@ -257,6 +279,7 @@ public class BankAccount
         sb.append( "    formatted: " ).append( toIndentedString( formatted ) ).append( "\n" );
         sb.append( "    iban: " ).append( toIndentedString( iban ) ).append( "\n" );
         sb.append( "    bic: " ).append( toIndentedString( bic ) ).append( "\n" );
+        sb.append( "    currency: " ).append( toIndentedString( currency ) ).append( "\n" );
         sb.append( "    primary: " ).append( toIndentedString( primary ) ).append( "\n" );
         sb.append( "    bank: " ).append( toIndentedString( bank ) ).append( "\n" );
         sb.append( "}" );
