@@ -49,7 +49,7 @@ public class Payment
      *
      * @since 1.7
      */
-    public static final String DEFAULT_ROOT_URL = "https://payment.turnon.cloud/_ah/api/";
+    public static final String DEFAULT_ROOT_URL = "https://payment-processor-dot-turn-online-eu.appspot.com/_ah/api/";
 
     /**
      * The default encoded service path of the service. This is determined when the library is
