@@ -12,11 +12,11 @@
  * limitations under the License.
  */
 
-package biz.turnonline.ecosystem.payment.client;
+package biz.turnonline.ecosystem.payment.facade;
 
-import biz.turnonline.ecosystem.payment.client.adaptee.BankAccountAdaptee;
-import biz.turnonline.ecosystem.payment.client.adaptee.BankCodeGetAdaptee;
-import biz.turnonline.ecosystem.payment.client.adaptee.BankCodeListAdaptee;
+import biz.turnonline.ecosystem.payment.facade.adaptee.BankAccountAdaptee;
+import biz.turnonline.ecosystem.payment.facade.adaptee.BankCodeGetAdaptee;
+import biz.turnonline.ecosystem.payment.facade.adaptee.BankCodeListAdaptee;
 import biz.turnonline.ecosystem.payment.model.BankAccount;
 import biz.turnonline.ecosystem.payment.model.BankCode;
 import com.google.inject.AbstractModule;
@@ -26,15 +26,9 @@ import org.ctoolkit.restapi.client.adaptee.GetExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.InsertExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
 import org.ctoolkit.restapi.client.adaptee.UpdateExecutorAdaptee;
-import org.ctoolkit.restapi.client.adapter.BeanMapperConfig;
 
 /**
  * The payment processor guice default adaptee configuration.
- * In order to have model mapped configure multibinder of {@link BeanMapperConfig}.
- * <pre>
- * Multibinder<BeanMapperConfig> multibinder = Multibinder.newSetBinder( binder(), BeanMapperConfig.class );
- * multibinder.addBinding().to( PaymentProcessorMapperConfig.class ).in( Singleton.class );
- * </pre>
  *
  * @author <a href="mailto:medvegy@turnonline.biz">Aurel Medvegy</a>
  */

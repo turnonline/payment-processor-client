@@ -1,4 +1,4 @@
-package biz.turnonline.ecosystem.payment.client;
+package biz.turnonline.ecosystem.payment.facade;
 
 import org.ctoolkit.restapi.client.Identifier;
 

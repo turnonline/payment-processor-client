@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package biz.turnonline.ecosystem.payment.client.adaptee;
+package biz.turnonline.ecosystem.payment.facade.adaptee;
 
 import biz.turnonline.ecosystem.payment.Payment;
 import biz.turnonline.ecosystem.payment.model.BankCode;

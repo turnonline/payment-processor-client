@@ -18,6 +18,8 @@
 
 package biz.turnonline.ecosystem.payment.model;
 
+import java.io.Serializable;
+
 /**
  * Model definition for BankAccountCollection.
  *
@@ -32,7 +34,9 @@ package biz.turnonline.ecosystem.payment.model;
 @SuppressWarnings( "javadoc" )
 public final class BankAccountCollection
         extends com.google.api.client.json.GenericJson
+        implements Serializable
 {
+    private static final long serialVersionUID = 5871602654311617457L;
 
     static
     {

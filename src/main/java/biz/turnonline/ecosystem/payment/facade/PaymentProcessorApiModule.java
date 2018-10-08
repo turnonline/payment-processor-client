@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package biz.turnonline.ecosystem.payment.client;
+package biz.turnonline.ecosystem.payment.facade;
 
 import biz.turnonline.ecosystem.payment.Payment;
 import biz.turnonline.ecosystem.payment.PaymentScopes;
