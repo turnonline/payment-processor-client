@@ -14,7 +14,7 @@
 
 package biz.turnonline.ecosystem.payment.facade.adaptee;
 
-import biz.turnonline.ecosystem.payment.Payment;
+import biz.turnonline.ecosystem.payment.PaymentProcessor;
 import biz.turnonline.ecosystem.payment.model.BankAccount;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.MediaProvider;
@@ -37,11 +37,11 @@ import java.util.Map;
  */
 @Singleton
 public class BankAccountAdaptee
-        extends AbstractGoogleClientAdaptee<Payment>
+        extends AbstractGoogleClientAdaptee<PaymentProcessor>
         implements RestExecutorAdaptee<BankAccount>
 {
     @Inject
-    public BankAccountAdaptee( Payment client )
+    public BankAccountAdaptee( PaymentProcessor client )
     {
         super( client );
     }
@@ -113,7 +113,7 @@ public class BankAccountAdaptee
                                           @Nullable String orderBy,
                                           @Nullable Boolean ascending ) throws IOException
     {
-        Payment.BankAccounts.List list = ( Payment.BankAccounts.List ) request;
+        PaymentProcessor.BankAccounts.List list = ( PaymentProcessor.BankAccounts.List ) request;
         list.setOffset( offset );
         list.setLimit( limit );
 

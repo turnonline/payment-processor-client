@@ -14,7 +14,7 @@
 
 package biz.turnonline.ecosystem.payment.facade.adaptee;
 
-import biz.turnonline.ecosystem.payment.Payment;
+import biz.turnonline.ecosystem.payment.PaymentProcessor;
 import biz.turnonline.ecosystem.payment.model.BankCode;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
@@ -31,10 +31,10 @@ import java.io.IOException;
  */
 @Singleton
 public class BankCodeGetAdaptee
-        extends AbstractGetExecutorAdaptee<Payment, BankCode>
+        extends AbstractGetExecutorAdaptee<PaymentProcessor, BankCode>
 {
     @Inject
-    public BankCodeGetAdaptee( Payment client )
+    public BankCodeGetAdaptee( PaymentProcessor client )
     {
         super( client );
     }

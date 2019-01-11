@@ -14,7 +14,7 @@
 
 package biz.turnonline.ecosystem.payment.facade.adaptee;
 
-import biz.turnonline.ecosystem.payment.Payment;
+import biz.turnonline.ecosystem.payment.PaymentProcessor;
 import biz.turnonline.ecosystem.payment.model.BankCode;
 import org.ctoolkit.restapi.client.Identifier;
 import org.ctoolkit.restapi.client.adaptee.ListExecutorAdaptee;
@@ -36,11 +36,11 @@ import java.util.Map;
  */
 @Singleton
 public class BankCodeListAdaptee
-        extends AbstractGoogleClientAdaptee<Payment>
+        extends AbstractGoogleClientAdaptee<PaymentProcessor>
         implements ListExecutorAdaptee<BankCode>
 {
     @Inject
-    public BankCodeListAdaptee( Payment client )
+    public BankCodeListAdaptee( PaymentProcessor client )
     {
         super( client );
     }
@@ -60,7 +60,7 @@ public class BankCodeListAdaptee
                                        @Nullable String orderBy,
                                        @Nullable Boolean ascending ) throws IOException
     {
-        Payment.BankCode.List list = ( Payment.BankCode.List ) request;
+        PaymentProcessor.BankCode.List list = ( PaymentProcessor.BankCode.List ) request;
         fill( request, parameters );
         return list.execute().getItems();
     }

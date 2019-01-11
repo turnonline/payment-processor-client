@@ -14,9 +14,10 @@
 
 package biz.turnonline.ecosystem.payment.facade;
 
-import biz.turnonline.ecosystem.payment.Payment;
-import biz.turnonline.ecosystem.payment.PaymentScopes;
+import biz.turnonline.ecosystem.payment.PaymentProcessor;
+import biz.turnonline.ecosystem.payment.PaymentProcessorScopes;
 import com.google.api.client.http.HttpRequestInitializer;
+import com.google.common.base.Strings;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import org.ctoolkit.restapi.client.AccessToken;
@@ -48,40 +49,56 @@ public class PaymentProcessorApiModule
 
     @Provides
     @Singleton
-    Payment providePaymentProcessor( GoogleApiProxyFactory factory )
+    PaymentProcessor providePaymentProcessor( GoogleApiProxyFactory factory )
     {
-        Set<String> scopes = PaymentScopes.all();
-        Payment.Builder builder;
+        Set<String> scopes = PaymentProcessorScopes.all();
+        PaymentProcessor.Builder builder;
+
+        String applicationName = factory.getApplicationName( API_PREFIX );
+        String endpointUrl = factory.getEndpointUrl( API_PREFIX );
+        String serviceAccount = factory.getServiceAccountEmail( API_PREFIX );
 
         try
         {
             initialized = factory.authorize( scopes, null, API_PREFIX );
             HttpRequestInitializer credential = initialized.getCredential();
-            builder = new Payment.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
-            builder.setApplicationName( factory.getApplicationName( API_PREFIX ) );
+
+            builder = new PaymentProcessor.Builder( factory.getHttpTransport(), factory.getJsonFactory(), credential );
+            builder.setApplicationName( applicationName );
+
+            if ( !Strings.isNullOrEmpty( endpointUrl ) )
+            {
+                builder.setRootUrl( endpointUrl );
+            }
         }
         catch ( GeneralSecurityException e )
         {
-            logger.error( "Failed. Scopes: " + scopes.toString()
-                    + " Application name: " + factory.getApplicationName( API_PREFIX )
-                    + " Service account: " + factory.getServiceAccountEmail( API_PREFIX ), e );
+            logger.error( assembleMessage( applicationName, endpointUrl, serviceAccount, scopes ), e );
             throw new UnauthorizedException( e.getMessage() );
         }
         catch ( IOException e )
         {
-            logger.error( "Failed. Scopes: " + scopes.toString()
-                    + " Application name: " + factory.getApplicationName( API_PREFIX )
-                    + " Service account: " + factory.getServiceAccountEmail( API_PREFIX ), e );
-
+            logger.error( assembleMessage( applicationName, endpointUrl, serviceAccount, scopes ), e );
             throw new RemoteServerErrorException( e.getMessage() );
         }
 
         return builder.build();
     }
 
+    private String assembleMessage( String applicationName,
+                                    String endpointUrl,
+                                    String serviceAccount,
+                                    Set<String> scopes )
+    {
+        return "Failed. Scopes: " + scopes.toString()
+                + " Application name: " + applicationName
+                + " Service account: " + serviceAccount
+                + " Endpoint URL: " + endpointUrl;
+    }
+
     @Provides
     @AccessToken( apiName = API_PREFIX )
-    ApiToken.Data providePaymentProcessorTokenData( Payment client )
+    ApiToken.Data providePaymentProcessorTokenData( PaymentProcessor client )
     {
         initialized.setServiceUrl( client.getBaseUrl() );
         return initialized.getTokenData();
