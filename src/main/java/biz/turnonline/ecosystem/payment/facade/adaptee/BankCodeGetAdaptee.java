@@ -21,6 +21,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGetExecutorAdaptee;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import java.io.IOException;
 
@@ -34,7 +35,7 @@ public class BankCodeGetAdaptee
         extends AbstractGetExecutorAdaptee<PaymentProcessor, BankCode>
 {
     @Inject
-    public BankCodeGetAdaptee( PaymentProcessor client )
+    public BankCodeGetAdaptee( Provider<PaymentProcessor> client )
     {
         super( client );
     }

@@ -23,6 +23,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGoogleClientAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +41,7 @@ public class BankCodeListAdaptee
         implements ListExecutorAdaptee<BankCode>
 {
     @Inject
-    public BankCodeListAdaptee( PaymentProcessor client )
+    public BankCodeListAdaptee( Provider<PaymentProcessor> client )
     {
         super( client );
     }

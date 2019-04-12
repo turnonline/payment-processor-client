@@ -24,6 +24,7 @@ import org.ctoolkit.restapi.client.adapter.AbstractGoogleClientAdaptee;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +42,7 @@ public class BankAccountAdaptee
         implements RestExecutorAdaptee<BankAccount>
 {
     @Inject
-    public BankAccountAdaptee( PaymentProcessor client )
+    public BankAccountAdaptee( Provider<PaymentProcessor> client )
     {
         super( client );
     }
