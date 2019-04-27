@@ -16,6 +16,8 @@ package biz.turnonline.ecosystem.payment.facade;
 
 import biz.turnonline.ecosystem.payment.PaymentProcessor;
 import com.google.inject.AbstractModule;
+import com.google.inject.multibindings.MapBinder;
+import org.ctoolkit.restapi.client.adapter.ClientApi;
 
 /**
  * The Payment Processor Java Client guice module default configuration.
@@ -31,5 +33,9 @@ public class PaymentProcessorClientModule
     protected void configure()
     {
         bind( PaymentProcessor.class ).toProvider( PaymentProcessorProvider.class );
+
+        MapBinder<String, ClientApi> mapBinder;
+        mapBinder = MapBinder.newMapBinder( binder(), String.class, ClientApi.class );
+        mapBinder.addBinding( API_PREFIX ).to( PaymentProcessorProvider.class );
     }
 }
