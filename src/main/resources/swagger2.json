@@ -9,7 +9,7 @@
     "basePath": "/api/payment",
     "tags": [
         {
-            "name": "Bank Accounts"
+            "name": "Bank"
         },
         {
             "name": "Code-books"
@@ -830,6 +830,27 @@
                 }
             }
         },
+        "Bill": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The unique identification of the bill (cash register document)."
+                },
+                "invoiceId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The invoice identification, unique only for specified order."
+                },
+                "orderId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The unique identification of the order associated with the settled invoice."
+                }
+            },
+            "description": "The bill or invoice document settled by associated transaction."
+        },
         "Certificate": {
             "type": "object",
             "properties": {
@@ -911,6 +932,71 @@
                     "description": "The error reason (error key)."
                 }
             }
+        },
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The transaction amount absolute value."
+                },
+                "balance": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The balance after the transaction."
+                },
+                "bankAccount": {
+                    "description": "The bank account associated with this transaction.",
+                    "$ref": "#/definitions/BankAccount"
+                },
+                "bill": {
+                    "description": "The bill or invoice document settled by this transaction.",
+                    "$ref": "#/definitions/Bill"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date when the transaction was completed (status COMPLETED)."
+                },
+                "credit": {
+                    "type": "boolean",
+                    "description": "The boolean indicating whether the payment has positive or negative amount; true - credit, false - debit."
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "The payment currency alphabetic code based on the ISO 4217."
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "A user provided payment reference."
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The unique payment identification related to the associated bill."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The transaction status.",
+                    "enum": [
+                        "CREATED",
+                        "PENDING",
+                        "COMPLETED",
+                        "DECLINED",
+                        "FAILED"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The payment type that has been used to make this payment.",
+                    "enum": [
+                        "CARD_PAYMENT",
+                        "REFUND",
+                        "TRANSFER"
+                    ]
+                }
+            },
+            "description": "Transaction that represents either a credit or debit operation."
         }
     }
 }
