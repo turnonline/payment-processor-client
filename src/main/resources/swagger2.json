@@ -501,7 +501,7 @@
                     "Bank Accounts"
                 ],
                 "summary": "Enables API access",
-                "description": "Enables API access to bank account. Onboard all the bank accounts in to the service via bank API (access granted by certificate). Once the task to grant access has been successfully finished, the customer's bank accounts will be available via endpoint to search bank accounts.",
+                "description": "Enables API access to bank account. Onboard all the bank accounts in to the service via bank API (access granted by certificate). Once the task to grant access has been successfully finished, the customer's bank accounts will be available via endpoint to search bank accounts.\n\nThe authenticated account that will enable API access becomes the account that will be solely associated with the payment processor service.",
                 "operationId": "enableApiAccess",
                 "consumes": [
                     "application/json"
