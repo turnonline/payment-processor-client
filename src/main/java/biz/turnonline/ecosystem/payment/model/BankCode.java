@@ -27,7 +27,6 @@ package biz.turnonline.ecosystem.payment.model;
  *
  * @author Google, Inc.
  */
-@SuppressWarnings( "javadoc" )
 public final class BankCode
         extends com.google.api.client.json.GenericJson
 {

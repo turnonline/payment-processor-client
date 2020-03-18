@@ -726,7 +726,7 @@
             "properties": {
                 "code": {
                     "type": "string",
-                    "description": "The country specific numeric bank code, taken from the code-book."
+                    "description": "The bank identified by a bank code, taken from the code-book."
                 },
                 "label": {
                     "type": "string",
@@ -801,7 +801,7 @@
             "properties": {
                 "code": {
                     "type": "string",
-                    "description": "The bank code is a numeric code assigned by a central bank to concrete bank."
+                    "description": "The bank identified by a bank code"
                 },
                 "label": {
                     "type": "string",
@@ -948,7 +948,7 @@
                 },
                 "bankAccount": {
                     "description": "The bank account associated with this transaction.",
-                    "$ref": "#/definitions/BankAccount"
+                    "$ref": "#/definitions/TransactionBank"
                 },
                 "bill": {
                     "description": "The bill or invoice document settled by this transaction.",
@@ -997,6 +997,20 @@
                 }
             },
             "description": "Transaction that represents either a credit or debit operation."
+        },
+        "TransactionBank": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The bank identified by a bank code."
+                },
+                "iban": {
+                    "type": "string",
+                    "description": "The international bank account number."
+                }
+            },
+            "description": "The bank account associated with this transaction."
         }
     }
 }

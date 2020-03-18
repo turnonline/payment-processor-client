@@ -27,7 +27,6 @@ package biz.turnonline.ecosystem.payment.model;
  *
  * @author Google, Inc.
  */
-@SuppressWarnings( "javadoc" )
 public final class BankAccount
         extends com.google.api.client.json.GenericJson
 {
@@ -36,13 +35,7 @@ public final class BankAccount
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String accountNumber;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
-    private BankAccountBank bank;
+    private Bank bank;
 
     /**
      * The value may be {@code null}.
@@ -54,13 +47,13 @@ public final class BankAccount
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String currency;
+    private java.lang.String branch;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String formatted;
+    private java.lang.String currency;
 
     /**
      * The value may be {@code null}.
@@ -85,35 +78,12 @@ public final class BankAccount
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String prefix;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
     private java.lang.Boolean primary;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getAccountNumber()
-    {
-        return accountNumber;
-    }
-
-    /**
-     * @param accountNumber accountNumber or {@code null} for none
-     */
-    public BankAccount setAccountNumber( java.lang.String accountNumber )
-    {
-        this.accountNumber = accountNumber;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public BankAccountBank getBank()
+    public Bank getBank()
     {
         return bank;
     }
@@ -121,7 +91,7 @@ public final class BankAccount
     /**
      * @param bank bank or {@code null} for none
      */
-    public BankAccount setBank( BankAccountBank bank )
+    public BankAccount setBank( Bank bank )
     {
         this.bank = bank;
         return this;
@@ -147,6 +117,23 @@ public final class BankAccount
     /**
      * @return value or {@code null} for none
      */
+    public java.lang.String getBranch()
+    {
+        return branch;
+    }
+
+    /**
+     * @param branch branch or {@code null} for none
+     */
+    public BankAccount setBranch( java.lang.String branch )
+    {
+        this.branch = branch;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
     public java.lang.String getCurrency()
     {
         return currency;
@@ -158,23 +145,6 @@ public final class BankAccount
     public BankAccount setCurrency( java.lang.String currency )
     {
         this.currency = currency;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.String getFormatted()
-    {
-        return formatted;
-    }
-
-    /**
-     * @param formatted formatted or {@code null} for none
-     */
-    public BankAccount setFormatted( java.lang.String formatted )
-    {
-        this.formatted = formatted;
         return this;
     }
 
@@ -226,23 +196,6 @@ public final class BankAccount
     public BankAccount setName( java.lang.String name )
     {
         this.name = name;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.String getPrefix()
-    {
-        return prefix;
-    }
-
-    /**
-     * @param prefix prefix or {@code null} for none
-     */
-    public BankAccount setPrefix( java.lang.String prefix )
-    {
-        this.prefix = prefix;
         return this;
     }
 

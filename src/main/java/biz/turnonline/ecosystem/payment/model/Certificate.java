@@ -17,7 +17,7 @@
 package biz.turnonline.ecosystem.payment.model;
 
 /**
- * Model definition for BankAccountBank.
+ * Model definition for Certificate.
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the TurnOnline.biz Payment Processor. For a detailed
@@ -27,8 +27,7 @@ package biz.turnonline.ecosystem.payment.model;
  *
  * @author Google, Inc.
  */
-@SuppressWarnings( "javadoc" )
-public final class BankAccountBank
+public final class Certificate
         extends com.google.api.client.json.GenericJson
 {
 
@@ -36,81 +35,104 @@ public final class BankAccountBank
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String code;
+    private java.lang.Boolean accessAuthorised;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String country;
+    private com.google.api.client.util.DateTime authorisedOn;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String label;
+    private java.lang.String clientId;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.String keyName;
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getCode()
+    public java.lang.Boolean getAccessAuthorised()
     {
-        return code;
+        return accessAuthorised;
     }
 
     /**
-     * @param code code or {@code null} for none
+     * @param accessAuthorised accessAuthorised or {@code null} for none
      */
-    public BankAccountBank setCode( java.lang.String code )
+    public Certificate setAccessAuthorised( java.lang.Boolean accessAuthorised )
     {
-        this.code = code;
+        this.accessAuthorised = accessAuthorised;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getCountry()
+    public com.google.api.client.util.DateTime getAuthorisedOn()
     {
-        return country;
+        return authorisedOn;
     }
 
     /**
-     * @param country country or {@code null} for none
+     * @param authorisedOn authorisedOn or {@code null} for none
      */
-    public BankAccountBank setCountry( java.lang.String country )
+    public Certificate setAuthorisedOn( com.google.api.client.util.DateTime authorisedOn )
     {
-        this.country = country;
+        this.authorisedOn = authorisedOn;
         return this;
     }
 
     /**
      * @return value or {@code null} for none
      */
-    public java.lang.String getLabel()
+    public java.lang.String getClientId()
     {
-        return label;
+        return clientId;
     }
 
     /**
-     * @param label label or {@code null} for none
+     * @param clientId clientId or {@code null} for none
      */
-    public BankAccountBank setLabel( java.lang.String label )
+    public Certificate setClientId( java.lang.String clientId )
     {
-        this.label = label;
+        this.clientId = clientId;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getKeyName()
+    {
+        return keyName;
+    }
+
+    /**
+     * @param keyName keyName or {@code null} for none
+     */
+    public Certificate setKeyName( java.lang.String keyName )
+    {
+        this.keyName = keyName;
         return this;
     }
 
     @Override
-    public BankAccountBank set( String fieldName, Object value )
+    public Certificate set( String fieldName, Object value )
     {
-        return ( BankAccountBank ) super.set( fieldName, value );
+        return ( Certificate ) super.set( fieldName, value );
     }
 
     @Override
-    public BankAccountBank clone()
+    public Certificate clone()
     {
-        return ( BankAccountBank ) super.clone();
+        return ( Certificate ) super.clone();
     }
 
 }

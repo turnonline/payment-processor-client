@@ -21,7 +21,6 @@ package biz.turnonline.ecosystem.payment;
  *
  * @since 1.3
  */
-@SuppressWarnings( "javadoc" )
 public abstract class PaymentProcessorRequest<T>
         extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest<T>
 {

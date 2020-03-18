@@ -20,7 +20,7 @@ package biz.turnonline.ecosystem.payment;
  * Service definition for PaymentProcessor (v1).
  *
  * <p>
- * TurnOnline.biz Ecosystem: Payment Processor REST API
+ * TurnOnline.biz Ecosystem Payment Processor
  * </p>
  *
  * <p>
@@ -36,7 +36,6 @@ package biz.turnonline.ecosystem.payment;
  * @author Google, Inc.
  * @since 1.3
  */
-@SuppressWarnings( "javadoc" )
 public class PaymentProcessor
         extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient
 {
@@ -294,6 +293,25 @@ public class PaymentProcessor
     {
 
         /**
+         * Create a request for the method "bank_accounts.certificates".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Certificates#execute()} method to invoke the remote operation.
+         *
+         * @param bankCode
+         * @param content  the {@link biz.turnonline.ecosystem.payment.model.Certificate}
+         * @return the request
+         */
+        public Certificates certificates( java.lang.String bankCode,
+                                          biz.turnonline.ecosystem.payment.model.Certificate content )
+                throws java.io.IOException
+        {
+            Certificates result = new Certificates( bankCode, content );
+            initialize( result );
+            return result;
+        }
+
+        /**
          * Create a request for the method "bank_accounts.delete".
          * <p>
          * This request holds the parameters needed by the payment server.  After setting any optional
@@ -388,6 +406,98 @@ public class PaymentProcessor
         public Primary primary()
         {
             return new Primary();
+        }
+
+        public class Certificates
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.Certificate>
+        {
+
+            private static final String REST_PATH = "bank-accounts/{bank_code}/certificates/actual";
+
+            @com.google.api.client.util.Key( "bank_code" )
+            private java.lang.String bankCode;
+
+            /**
+             * Create a request for the method "bank_accounts.certificates".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Certificates#execute()} method to invoke the remote operation. <p>
+             * {@link
+             * Certificates#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)}
+             * must be called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param bankCode
+             * @param content  the {@link biz.turnonline.ecosystem.payment.model.Certificate}
+             * @since 1.13
+             */
+            protected Certificates( java.lang.String bankCode,
+                                    biz.turnonline.ecosystem.payment.model.Certificate content )
+            {
+                super( PaymentProcessor.this, "PUT", REST_PATH, content, biz.turnonline.ecosystem.payment.model.Certificate.class );
+                this.bankCode = com.google.api.client.util.Preconditions.checkNotNull( bankCode, "Required parameter bankCode must be specified." );
+            }
+
+            @Override
+            public Certificates setAlt( java.lang.String alt )
+            {
+                return ( Certificates ) super.setAlt( alt );
+            }
+
+            @Override
+            public Certificates setFields( java.lang.String fields )
+            {
+                return ( Certificates ) super.setFields( fields );
+            }
+
+            @Override
+            public Certificates setKey( java.lang.String key )
+            {
+                return ( Certificates ) super.setKey( key );
+            }
+
+            @Override
+            public Certificates setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Certificates ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Certificates setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Certificates ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Certificates setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Certificates ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Certificates setUserIp( java.lang.String userIp )
+            {
+                return ( Certificates ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getBankCode()
+            {
+                return bankCode;
+            }
+
+            public Certificates setBankCode( java.lang.String bankCode )
+            {
+                this.bankCode = bankCode;
+                return this;
+            }
+
+            @Override
+            public Certificates set( String parameterName, Object value )
+            {
+                return ( Certificates ) super.set( parameterName, value );
+            }
         }
 
         public class Delete
@@ -667,6 +777,9 @@ public class PaymentProcessor
             private java.lang.Integer limit;
 
             @com.google.api.client.util.Key
+            private java.lang.String bank;
+
+            @com.google.api.client.util.Key
             private java.lang.Integer offset;
 
             /**
@@ -808,6 +921,20 @@ public class PaymentProcessor
             public List setLimit( java.lang.Integer limit )
             {
                 this.limit = limit;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getBank()
+            {
+                return bank;
+            }
+
+            public List setBank( java.lang.String bank )
+            {
+                this.bank = bank;
                 return this;
             }
 
