@@ -28,7 +28,7 @@
         "/v1/bank-accounts": {
             "get": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Search bank accounts",
                 "operationId": "searchBankAccounts",
@@ -118,7 +118,7 @@
             },
             "post": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Create bank account",
                 "operationId": "insertBankAccount",
@@ -180,7 +180,7 @@
         "/v1/bank-accounts/primary": {
             "get": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Get credit bank account",
                 "description": "Returns the credit bank account to be listed as the target account for a payment on an issued invoice. The country property of the bank account is used here as a filter parameter. If you need to return credit account for different country, specify the country as a query parameter.\n\nThe credit bank account will be first searched with preferred actual country (taken either as a default or explicit one), then if not found without applied country filter.",
@@ -246,7 +246,7 @@
         "/v1/bank-accounts/{account_id}": {
             "get": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Get bank account",
                 "operationId": "getBankAccount",
@@ -302,7 +302,7 @@
             },
             "put": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Update bank account",
                 "operationId": "updateBankAccount",
@@ -368,7 +368,7 @@
             },
             "delete": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Delete bank account",
                 "operationId": "deleteBankAccount",
@@ -431,7 +431,7 @@
         "/v1/bank-accounts/{account_id}/primary": {
             "put": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Mark bank account as a primary credit account",
                 "description": "Mark the corresponding bank account as a primary credit account. This bank account becomes the primary credit account for country that bank account belongs to. If there are more bank accounts specified for different countries, the user must mark it primary explicitly with the bank account that belongs to target country.",
@@ -498,7 +498,7 @@
         "/v1/bank-accounts/{bank_code}/certificates/actual": {
             "put": {
                 "tags": [
-                    "Bank Accounts"
+                    "Bank"
                 ],
                 "summary": "Enables API access",
                 "description": "Enables API access to bank account. Onboard all the bank accounts in to the service via bank API (access granted by certificate). Once the task to grant access has been successfully finished, the customer's bank accounts will be available via endpoint to search bank accounts.\n\nThe authenticated account that will enable API access becomes the account that will be solely associated with the payment processor service.",
@@ -726,7 +726,7 @@
             "properties": {
                 "code": {
                     "type": "string",
-                    "description": "The bank identified by a bank code, taken from the code-book."
+                    "description": "The bank identified by a bank code, taken from the code-book. Taken from valid IBAN while created."
                 },
                 "label": {
                     "type": "string",
@@ -734,7 +734,7 @@
                 },
                 "country": {
                     "type": "string",
-                    "description": "The country of the bank where bank account has been opened. The missing value will be taken from the codebook if that combination is being found. The ISO 3166 alpha-2 country code. It’s case insensitive.\n\nNote: Currently supported only SK and CZ."
+                    "description": "The country of the bank domicile, taken from valid IBAN while created. The ISO 3166 alpha-2 country code. It’s case insensitive."
                 }
             }
         },
@@ -744,7 +744,7 @@
                 "id": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "The unique bank account identification."
+                    "description": "The unique bank account identification within service."
                 },
                 "name": {
                     "type": "string",
@@ -752,7 +752,7 @@
                 },
                 "branch": {
                     "type": "string",
-                    "description": "The bank branch identification."
+                    "description": "The bank branch, taken from valid IBAN while created."
                 },
                 "iban": {
                     "type": "string",
@@ -776,7 +776,7 @@
                     "$ref": "#/definitions/Bank"
                 }
             },
-            "description": "The bank account resource."
+            "description": "The bank account (beneficiary).\n\nA valid IBAN will set following properties too, not needed to be set separately:\n* bank\n* branch\n* country"
         },
         "BankAccountCollection": {
             "type": "object",
@@ -836,7 +836,7 @@
                 "id": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "The unique identification of the bill (cash register document)."
+                    "description": "The unique identification of the bill (receipt)."
                 },
                 "invoiceId": {
                     "type": "integer",
@@ -849,7 +849,7 @@
                     "description": "The unique identification of the order associated with the settled invoice."
                 }
             },
-            "description": "The bill or invoice document settled by associated transaction."
+            "description": "Identification of the bill (receipt) or invoice document settled by associated transaction."
         },
         "Certificate": {
             "type": "object",
@@ -951,7 +951,7 @@
                     "$ref": "#/definitions/TransactionBank"
                 },
                 "bill": {
-                    "description": "The bill or invoice document settled by this transaction.",
+                    "description": "Identification of the bill (receipt) or invoice document settled by this transaction.",
                     "$ref": "#/definitions/Bill"
                 },
                 "completedAt": {
@@ -991,6 +991,7 @@
                     "description": "The payment type that has been used to make this payment.",
                     "enum": [
                         "CARD_PAYMENT",
+                        "CASH",
                         "REFUND",
                         "TRANSFER"
                     ]
