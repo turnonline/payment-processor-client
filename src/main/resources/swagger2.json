@@ -720,13 +720,10 @@
     "definitions": {
         "Bank": {
             "type": "object",
-            "required": [
-                "code"
-            ],
             "properties": {
                 "code": {
                     "type": "string",
-                    "description": "The bank identified by a bank code, taken from the code-book. Taken from valid IBAN while created."
+                    "description": "The bank identified by a bank code, taken from the code-book. Taken from valid IBAN while set."
                 },
                 "label": {
                     "type": "string",
@@ -734,7 +731,7 @@
                 },
                 "country": {
                     "type": "string",
-                    "description": "The country of the bank domicile, taken from valid IBAN while created. The ISO 3166 alpha-2 country code. It’s case insensitive."
+                    "description": "The country of the bank domicile, taken from valid IBAN while set. The ISO 3166 alpha-2 country code. It’s case insensitive."
                 }
             }
         },
@@ -744,7 +741,7 @@
                 "id": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "The unique bank account identification within service."
+                    "description": "The unique bank account identification within service. Assigned by the service."
                 },
                 "name": {
                     "type": "string",
@@ -752,7 +749,7 @@
                 },
                 "branch": {
                     "type": "string",
-                    "description": "The bank branch, taken from valid IBAN while created."
+                    "description": "The bank branch, taken from valid IBAN while set."
                 },
                 "iban": {
                     "type": "string",
@@ -776,7 +773,7 @@
                     "$ref": "#/definitions/Bank"
                 }
             },
-            "description": "The bank account (beneficiary).\n\nA valid IBAN will set following properties too, not needed to be set separately:\n* bank\n* branch\n* country"
+            "description": "The bank account (beneficiary).\n\nA valid IBAN will set following properties too, not needed to be set separately:\n* bank code\n* branch\n* bank country"
         },
         "BankAccountCollection": {
             "type": "object",
