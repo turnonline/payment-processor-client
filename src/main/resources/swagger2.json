@@ -705,6 +705,103 @@
                     "description": "The bank identification to retrieve specific description of the associated bank."
                 }
             ]
+        },
+        "/v1/transactions": {
+            "get": {
+                "tags": [
+                    "Bank"
+                ],
+                "summary": "Get bank transactions",
+                "description": "Get transactions filtered based on the optional criteria.",
+                "operationId": "filterTransactions",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Bank account identification for which to filter transactions."
+                    },
+                    {
+                        "name": "credit",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "The boolean criteria to filter either credit or debit transactions; true - credit, false - debit. If not provided both will be included."
+                    },
+                    {
+                        "name": "failure",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean",
+                        "description": "The status of the transactions to filter in results; true (one of the created, pending, completed); false (one of the declined, failed, reverted). If not provided both will be included."
+                    },
+                    {
+                        "name": "invoiceId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Identification of the invoice to search settled transactions. Order Id is being required for successful match."
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Identification of the order to search for transactions. If invoice Id is not provided, the transactions of all associated invoices will be in the results."
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The type of the transactions to filter in results. Case insensitive.",
+                        "enum": [
+                            "CARD_PAYMENT",
+                            "CASH",
+                            "REFUND",
+                            "TRANSFER"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of transactions that meets the filter criteria.",
+                        "schema": {
+                            "$ref": "#/definitions/TransactionCollection"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "It's a failure of the server. The client can repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The service is unavailable or the server has timed out processing of the request. The client may repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": []
+                    }
+                ]
+            }
         }
     },
     "securityDefinitions": {
@@ -1009,6 +1106,19 @@
                 }
             },
             "description": "The bank account associated with this transaction."
+        },
+        "TransactionCollection": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "description": "Transaction items.",
+                    "items": {
+                        "$ref": "#/definitions/Transaction"
+                    }
+                }
+            },
+            "description": "Bank transaction collection wrapper."
         }
     }
 }

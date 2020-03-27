@@ -162,6 +162,22 @@ public class PaymentProcessor
     }
 
     /**
+     * An accessor for creating requests from the Transactions collection.
+     *
+     * <p>The typical use is:</p>
+     * <pre>
+     *   {@code PaymentProcessor payment = new PaymentProcessor(...);}
+     *   {@code PaymentProcessor.Transactions.List request = payment.transactions().list(parameters ...)}
+     * </pre>
+     *
+     * @return the resource collection
+     */
+    public Transactions transactions()
+    {
+        return new Transactions();
+    }
+
+    /**
      * Builder for {@link PaymentProcessor}.
      *
      * <p>
@@ -1522,6 +1538,213 @@ public class PaymentProcessor
             public List setCountry( java.lang.String country )
             {
                 this.country = country;
+                return this;
+            }
+
+            @Override
+            public List set( String parameterName, Object value )
+            {
+                return ( List ) super.set( parameterName, value );
+            }
+        }
+
+    }
+
+    /**
+     * The "transactions" collection of methods.
+     */
+    public class Transactions
+    {
+
+        /**
+         * Create a request for the method "transactions.list".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link List#execute()} method to invoke the remote operation.
+         *
+         * @return the request
+         */
+        public List list() throws java.io.IOException
+        {
+            List result = new List();
+            initialize( result );
+            return result;
+        }
+
+        public class List
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.TransactionCollection>
+        {
+
+            private static final String REST_PATH = "transactions";
+
+            @com.google.api.client.util.Key
+            private java.lang.Long orderId;
+
+            @com.google.api.client.util.Key
+            private java.lang.Long invoiceId;
+
+            @com.google.api.client.util.Key
+            private java.lang.Boolean failure;
+
+            @com.google.api.client.util.Key
+            private java.lang.Boolean credit;
+
+            @com.google.api.client.util.Key
+            private java.lang.String type;
+
+            @com.google.api.client.util.Key
+            private java.lang.Long accountId;
+
+            /**
+             * Create a request for the method "transactions.list".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link List#execute()} method to invoke the remote operation. <p> {@link
+             * List#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be
+             * called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @since 1.13
+             */
+            protected List()
+            {
+                super( PaymentProcessor.this, "GET", REST_PATH, null, biz.turnonline.ecosystem.payment.model.TransactionCollection.class );
+            }
+
+            @Override
+            public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException
+            {
+                return super.executeUsingHead();
+            }
+
+            @Override
+            public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException
+            {
+                return super.buildHttpRequestUsingHead();
+            }
+
+            @Override
+            public List setAlt( java.lang.String alt )
+            {
+                return ( List ) super.setAlt( alt );
+            }
+
+            @Override
+            public List setFields( java.lang.String fields )
+            {
+                return ( List ) super.setFields( fields );
+            }
+
+            @Override
+            public List setKey( java.lang.String key )
+            {
+                return ( List ) super.setKey( key );
+            }
+
+            @Override
+            public List setOauthToken( java.lang.String oauthToken )
+            {
+                return ( List ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public List setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( List ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public List setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( List ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public List setUserIp( java.lang.String userIp )
+            {
+                return ( List ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getOrderId()
+            {
+                return orderId;
+            }
+
+            public List setOrderId( java.lang.Long orderId )
+            {
+                this.orderId = orderId;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getInvoiceId()
+            {
+                return invoiceId;
+            }
+
+            public List setInvoiceId( java.lang.Long invoiceId )
+            {
+                this.invoiceId = invoiceId;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Boolean getFailure()
+            {
+                return failure;
+            }
+
+            public List setFailure( java.lang.Boolean failure )
+            {
+                this.failure = failure;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Boolean getCredit()
+            {
+                return credit;
+            }
+
+            public List setCredit( java.lang.Boolean credit )
+            {
+                this.credit = credit;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getType()
+            {
+                return type;
+            }
+
+            public List setType( java.lang.String type )
+            {
+                this.type = type;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getAccountId()
+            {
+                return accountId;
+            }
+
+            public List setAccountId( java.lang.Long accountId )
+            {
+                this.accountId = accountId;
                 return this;
             }
 
