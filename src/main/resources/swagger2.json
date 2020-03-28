@@ -749,6 +749,24 @@
                         "description": "Identification of the invoice to search settled transactions. Order Id is being required for successful match."
                     },
                     {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The maximum number of results to retrieve.",
+                        "default": 0
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The position of the first result to retrieve, numbered from 0.",
+                        "default": 20
+                    },
+                    {
                         "name": "orderId",
                         "in": "query",
                         "required": false,

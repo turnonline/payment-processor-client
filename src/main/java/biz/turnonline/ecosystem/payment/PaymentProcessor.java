@@ -1590,6 +1590,12 @@ public class PaymentProcessor
             private java.lang.Boolean credit;
 
             @com.google.api.client.util.Key
+            private java.lang.Integer limit;
+
+            @com.google.api.client.util.Key
+            private java.lang.Integer offset;
+
+            @com.google.api.client.util.Key
             private java.lang.String type;
 
             @com.google.api.client.util.Key
@@ -1717,6 +1723,36 @@ public class PaymentProcessor
             public List setCredit( java.lang.Boolean credit )
             {
                 this.credit = credit;
+                return this;
+            }
+
+            /**
+             * [ default: 20]
+             * [
+             */
+            public java.lang.Integer getLimit()
+            {
+                return limit;
+            }
+
+            public List setLimit( java.lang.Integer limit )
+            {
+                this.limit = limit;
+                return this;
+            }
+
+            /**
+             * [ default: 0]
+             * [
+             */
+            public java.lang.Integer getOffset()
+            {
+                return offset;
+            }
+
+            public List setOffset( java.lang.Integer offset )
+            {
+                this.offset = offset;
                 return this;
             }
 
