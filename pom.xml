@@ -14,8 +14,7 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.ctoolkit.maven</groupId>
@@ -26,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-payment-processor-client</artifactId>
-    <version>0.11-SNAPSHOT</version>
+    <version>0.11</version>
     <name>Payment Processor Java Client</name>
     <description>TurnOnline.biz Ecosystem Payment Processor REST API Java Client</description>
 
@@ -34,7 +33,7 @@
         <connection>scm:git:[fetch=]git@github.com:turnonline/payment-processor-client.git</connection>
         <developerConnection>scm:git:[push=]git@github.com:turnonline/payment-processor-client.git</developerConnection>
         <url>https://github.com/turnonline/payment-processor-client</url>
-        <tag>HEAD</tag>
+        <tag>turnonline-payment-processor-client-0.11</tag>
     </scm>
 
     <issueManagement>
