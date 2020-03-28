@@ -1584,16 +1584,13 @@ public class PaymentProcessor
             private java.lang.Long invoiceId;
 
             @com.google.api.client.util.Key
-            private java.lang.Boolean failure;
-
-            @com.google.api.client.util.Key
-            private java.lang.Boolean credit;
-
-            @com.google.api.client.util.Key
             private java.lang.Integer limit;
 
             @com.google.api.client.util.Key
             private java.lang.Integer offset;
+
+            @com.google.api.client.util.Key
+            private java.lang.String operation;
 
             @com.google.api.client.util.Key
             private java.lang.String type;
@@ -1699,34 +1696,6 @@ public class PaymentProcessor
             }
 
             /**
-             *
-             */
-            public java.lang.Boolean getFailure()
-            {
-                return failure;
-            }
-
-            public List setFailure( java.lang.Boolean failure )
-            {
-                this.failure = failure;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.Boolean getCredit()
-            {
-                return credit;
-            }
-
-            public List setCredit( java.lang.Boolean credit )
-            {
-                this.credit = credit;
-                return this;
-            }
-
-            /**
              * [ default: 20]
              * [
              */
@@ -1753,6 +1722,21 @@ public class PaymentProcessor
             public List setOffset( java.lang.Integer offset )
             {
                 this.offset = offset;
+                return this;
+            }
+
+            /**
+             * [ default: both]
+             * [
+             */
+            public java.lang.String getOperation()
+            {
+                return operation;
+            }
+
+            public List setOperation( java.lang.String operation )
+            {
+                this.operation = operation;
                 return this;
             }
 

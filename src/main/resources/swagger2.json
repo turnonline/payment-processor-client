@@ -727,18 +727,43 @@
                         "description": "Bank account identification for which to filter transactions."
                     },
                     {
-                        "name": "credit",
+                        "name": "operation",
                         "in": "query",
                         "required": false,
-                        "type": "boolean",
-                        "description": "The boolean criteria to filter either credit or debit transactions; true - credit, false - debit. If not provided both will be included."
+                        "type": "string",
+                        "description": "Type of the bank operation to be included in results. Case insensitive.",
+                        "default": "BOTH",
+                        "enum": [
+                            "CREDIT",
+                            "DEBIT",
+                            "BOTH"
+                        ]
                     },
                     {
-                        "name": "failure",
+                        "name": "offset",
                         "in": "query",
                         "required": false,
-                        "type": "boolean",
-                        "description": "The status of the transactions to filter in results; true (one of the created, pending, completed); false (one of the declined, failed, reverted). If not provided both will be included."
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The position of the first transaction to retrieve, numbered from 0.",
+                        "default": 20
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The maximum number of transactions to retrieve.",
+                        "default": 0
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Identification of the order to search for transactions. If invoice Id is not provided, a transactions of all associated invoices will be in the results."
                     },
                     {
                         "name": "invoiceId",
@@ -749,37 +774,11 @@
                         "description": "Identification of the invoice to search settled transactions. Order Id is being required for successful match."
                     },
                     {
-                        "name": "limit",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "The maximum number of results to retrieve.",
-                        "default": 0
-                    },
-                    {
-                        "name": "offset",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "The position of the first result to retrieve, numbered from 0.",
-                        "default": 20
-                    },
-                    {
-                        "name": "orderId",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int64",
-                        "description": "Identification of the order to search for transactions. If invoice Id is not provided, the transactions of all associated invoices will be in the results."
-                    },
-                    {
                         "name": "type",
                         "in": "query",
                         "required": false,
                         "type": "string",
-                        "description": "The type of the transactions to filter in results. Case insensitive.",
+                        "description": "The payment type of the transactions to filter in results. Case insensitive.",
                         "enum": [
                             "CARD_PAYMENT",
                             "CASH",
