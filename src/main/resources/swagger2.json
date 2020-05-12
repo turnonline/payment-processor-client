@@ -944,23 +944,23 @@
         "Bill": {
             "type": "object",
             "properties": {
-                "id": {
+                "receipt": {
                     "type": "integer",
                     "format": "int64",
-                    "description": "The unique identification of the bill (receipt)."
+                    "description": "The unique identification of the bill (receipt) within Billing Processor service."
                 },
-                "invoiceId": {
+                "invoice": {
                     "type": "integer",
                     "format": "int64",
                     "description": "The invoice identification, unique only for specified order."
                 },
-                "orderId": {
+                "order": {
                     "type": "integer",
                     "format": "int64",
                     "description": "The unique identification of the order associated with the settled invoice."
                 }
             },
-            "description": "Identification of the bill (receipt) or invoice document settled by associated transaction."
+            "description": "Identification of the bill (receipt) or invoice document settled by associated transaction. Valid invoice identification includes order identification too."
         },
         "Certificate": {
             "type": "object",
@@ -1106,6 +1106,11 @@
                         "REFUND",
                         "TRANSFER"
                     ]
+                },
+                "transactionId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The identification of the transaction within payment processor service (single tenant)."
                 }
             },
             "description": "Transaction that represents either a credit or debit operation."
