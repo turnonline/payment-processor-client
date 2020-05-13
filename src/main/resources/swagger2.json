@@ -1078,13 +1078,13 @@
                     "type": "string",
                     "description": "The payment currency alphabetic code based on the ISO 4217."
                 },
-                "reference": {
-                    "type": "string",
-                    "description": "A user provided payment reference."
-                },
                 "key": {
                     "type": "string",
                     "description": "The unique payment identification related to the associated bill."
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "A user provided payment reference."
                 },
                 "status": {
                     "type": "string",
@@ -1097,6 +1097,11 @@
                         "FAILED"
                     ]
                 },
+                "transactionId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The identification of the transaction within payment processor service unique for single Ecosystem account."
+                },
                 "type": {
                     "type": "string",
                     "description": "The payment type that has been used to make this payment.",
@@ -1106,11 +1111,6 @@
                         "REFUND",
                         "TRANSFER"
                     ]
-                },
-                "transactionId": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "The identification of the transaction within payment processor service (single tenant)."
                 }
             },
             "description": "Transaction that represents either a credit or debit operation."
