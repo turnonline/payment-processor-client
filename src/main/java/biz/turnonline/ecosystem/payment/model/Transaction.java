@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -53,6 +53,18 @@ public final class Transaction
      */
     @com.google.api.client.util.Key
     private Bill bill;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.Double billAmount;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.String billCurrency;
 
     /**
      * The value may be {@code null}.
@@ -174,6 +186,40 @@ public final class Transaction
     public Transaction setBill( Bill bill )
     {
         this.bill = bill;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.Double getBillAmount()
+    {
+        return billAmount;
+    }
+
+    /**
+     * @param billAmount billAmount or {@code null} for none
+     */
+    public Transaction setBillAmount( java.lang.Double billAmount )
+    {
+        this.billAmount = billAmount;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getBillCurrency()
+    {
+        return billCurrency;
+    }
+
+    /**
+     * @param billCurrency billCurrency or {@code null} for none
+     */
+    public Transaction setBillCurrency( java.lang.String billCurrency )
+    {
+        this.billCurrency = billCurrency;
         return this;
     }
 

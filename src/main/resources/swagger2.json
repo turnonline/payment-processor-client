@@ -1083,6 +1083,15 @@
                     "description": "Identification of the bill (receipt) or invoice document settled by this transaction.",
                     "$ref": "#/definitions/Bill"
                 },
+                "billAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The billing amount for cross-currency payments, otherwise will be missing."
+                },
+                "billCurrency": {
+                    "type": "string",
+                    "description": "The billing currency for cross-currency payments, otherwise will be missing."
+                },
                 "completedAt": {
                     "type": "string",
                     "format": "date-time",
