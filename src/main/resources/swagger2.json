@@ -1044,6 +1044,24 @@
                 }
             }
         },
+        "Merchant": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "The merchant category."
+                },
+                "city": {
+                    "type": "string",
+                    "description": "The merchant city."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The merchant name."
+                }
+            },
+            "description": "The merchant details, available only for card payments."
+        },
         "Transaction": {
             "type": "object",
             "properties": {
@@ -1081,6 +1099,9 @@
                 "key": {
                     "type": "string",
                     "description": "The unique payment identification related to the associated bill."
+                },
+                "merchant": {
+                    "$ref": "#/definitions/Merchant"
                 },
                 "reference": {
                     "type": "string",

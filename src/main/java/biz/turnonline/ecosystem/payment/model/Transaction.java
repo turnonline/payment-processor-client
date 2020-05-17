@@ -82,6 +82,12 @@ public final class Transaction
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
+    private Merchant merchant;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
     private java.lang.String reference;
 
     /**
@@ -242,6 +248,23 @@ public final class Transaction
     /**
      * @return value or {@code null} for none
      */
+    public Merchant getMerchant()
+    {
+        return merchant;
+    }
+
+    /**
+     * @param merchant merchant or {@code null} for none
+     */
+    public Transaction setMerchant( Merchant merchant )
+    {
+        this.merchant = merchant;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
     public java.lang.String getReference()
     {
         return reference;
@@ -318,4 +341,5 @@ public final class Transaction
     {
         return ( Transaction ) super.clone();
     }
+
 }
