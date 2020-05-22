@@ -1095,7 +1095,7 @@
                 "completedAt": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "The date when the transaction was completed (status COMPLETED)."
+                    "description": "The date when the transaction was completed (mandatory for COMPLETED status only)."
                 },
                 "credit": {
                     "type": "boolean",
