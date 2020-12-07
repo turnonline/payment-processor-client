@@ -784,19 +784,19 @@ public class PaymentProcessor
             private static final String REST_PATH = "bank-accounts";
 
             @com.google.api.client.util.Key
-            private java.lang.String country;
-
-            @com.google.api.client.util.Key
-            private java.lang.Boolean alternative;
-
-            @com.google.api.client.util.Key
-            private java.lang.Integer limit;
+            private java.lang.Integer offset;
 
             @com.google.api.client.util.Key
             private java.lang.String bank;
 
             @com.google.api.client.util.Key
-            private java.lang.Integer offset;
+            private java.lang.Boolean alternative;
+
+            @com.google.api.client.util.Key
+            private java.lang.String country;
+
+            @com.google.api.client.util.Key
+            private java.lang.Integer limit;
 
             /**
              * Create a request for the method "bank_accounts.list".
@@ -868,16 +868,31 @@ public class PaymentProcessor
             }
 
             /**
-             *
+             * [ default: 0]
+             * [
              */
-            public java.lang.String getCountry()
+            public java.lang.Integer getOffset()
             {
-                return country;
+                return offset;
             }
 
-            public List setCountry( java.lang.String country )
+            public List setOffset( java.lang.Integer offset )
             {
-                this.country = country;
+                this.offset = offset;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getBank()
+            {
+                return bank;
+            }
+
+            public List setBank( java.lang.String bank )
+            {
+                this.bank = bank;
                 return this;
             }
 
@@ -926,6 +941,20 @@ public class PaymentProcessor
             }
 
             /**
+             *
+             */
+            public java.lang.String getCountry()
+            {
+                return country;
+            }
+
+            public List setCountry( java.lang.String country )
+            {
+                this.country = country;
+                return this;
+            }
+
+            /**
              * [ default: 10]
              * [
              */
@@ -937,35 +966,6 @@ public class PaymentProcessor
             public List setLimit( java.lang.Integer limit )
             {
                 this.limit = limit;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.String getBank()
-            {
-                return bank;
-            }
-
-            public List setBank( java.lang.String bank )
-            {
-                this.bank = bank;
-                return this;
-            }
-
-            /**
-             * [ default: 0]
-             * [
-             */
-            public java.lang.Integer getOffset()
-            {
-                return offset;
-            }
-
-            public List setOffset( java.lang.Integer offset )
-            {
-                this.offset = offset;
                 return this;
             }
 
@@ -1584,19 +1584,28 @@ public class PaymentProcessor
             private java.lang.Long invoiceId;
 
             @com.google.api.client.util.Key
+            private com.google.api.client.util.DateTime from;
+
+            @com.google.api.client.util.Key
+            private java.lang.Long accountId;
+
+            @com.google.api.client.util.Key
+            private java.lang.String type;
+
+            @com.google.api.client.util.Key
+            private java.lang.String operation;
+
+            @com.google.api.client.util.Key
             private java.lang.Integer limit;
 
             @com.google.api.client.util.Key
             private java.lang.Integer offset;
 
             @com.google.api.client.util.Key
-            private java.lang.String operation;
+            private java.lang.String status;
 
             @com.google.api.client.util.Key
-            private java.lang.String type;
-
-            @com.google.api.client.util.Key
-            private java.lang.Long accountId;
+            private com.google.api.client.util.DateTime to;
 
             /**
              * Create a request for the method "transactions.list".
@@ -1696,6 +1705,63 @@ public class PaymentProcessor
             }
 
             /**
+             *
+             */
+            public com.google.api.client.util.DateTime getFrom()
+            {
+                return from;
+            }
+
+            public List setFrom( com.google.api.client.util.DateTime from )
+            {
+                this.from = from;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getAccountId()
+            {
+                return accountId;
+            }
+
+            public List setAccountId( java.lang.Long accountId )
+            {
+                this.accountId = accountId;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getType()
+            {
+                return type;
+            }
+
+            public List setType( java.lang.String type )
+            {
+                this.type = type;
+                return this;
+            }
+
+            /**
+             * [ default: both]
+             * [
+             */
+            public java.lang.String getOperation()
+            {
+                return operation;
+            }
+
+            public List setOperation( java.lang.String operation )
+            {
+                this.operation = operation;
+                return this;
+            }
+
+            /**
              * [ default: 20]
              * [
              */
@@ -1726,45 +1792,30 @@ public class PaymentProcessor
             }
 
             /**
-             * [ default: both]
-             * [
+             *
              */
-            public java.lang.String getOperation()
+            public java.lang.String getStatus()
             {
-                return operation;
+                return status;
             }
 
-            public List setOperation( java.lang.String operation )
+            public List setStatus( java.lang.String status )
             {
-                this.operation = operation;
+                this.status = status;
                 return this;
             }
 
             /**
              *
              */
-            public java.lang.String getType()
+            public com.google.api.client.util.DateTime getTo()
             {
-                return type;
+                return to;
             }
 
-            public List setType( java.lang.String type )
+            public List setTo( com.google.api.client.util.DateTime to )
             {
-                this.type = type;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.Long getAccountId()
-            {
-                return accountId;
-            }
-
-            public List setAccountId( java.lang.Long accountId )
-            {
-                this.accountId = accountId;
+                this.to = to;
                 return this;
             }
 

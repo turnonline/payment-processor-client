@@ -785,6 +785,36 @@
                             "REFUND",
                             "TRANSFER"
                         ]
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The payment status of the transactions to filter in results. Case insensitive.",
+                        "enum": [
+                            "CREATED",
+                            "PENDING",
+                            "COMPLETED",
+                            "DECLINED",
+                            "FAILED"
+                        ]
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date and time of the transaction's created date to filter from."
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date and time of the transaction's created date to filter to."
                     }
                 ],
                 "responses": {
