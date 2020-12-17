@@ -1295,10 +1295,25 @@
             "type": "object",
             "properties": {
                 "operation": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "LT",
+                        "LTE",
+                        "GTE",
+                        "GT",
+                        "EQ",
+                        "REGEXP"
+                    ]
                 },
                 "propertyName": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "NAME",
+                        "AMOUNT",
+                        "CURRENCY",
+                        "CREDIT",
+                        "COUNTERPARTY_IBAN"
+                    ]
                 },
                 "propertyValue": {
                     "type": "string"
