@@ -19,9 +19,11 @@ package biz.turnonline.ecosystem.payment.facade;
 import biz.turnonline.ecosystem.payment.facade.adaptee.BankAccountAdaptee;
 import biz.turnonline.ecosystem.payment.facade.adaptee.BankCodeGetAdaptee;
 import biz.turnonline.ecosystem.payment.facade.adaptee.BankCodeListAdaptee;
+import biz.turnonline.ecosystem.payment.facade.adaptee.CategoryAdaptee;
 import biz.turnonline.ecosystem.payment.facade.adaptee.TransactionAdaptee;
 import biz.turnonline.ecosystem.payment.model.BankAccount;
 import biz.turnonline.ecosystem.payment.model.BankCode;
+import biz.turnonline.ecosystem.payment.model.Category;
 import biz.turnonline.ecosystem.payment.model.Transaction;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -76,5 +78,25 @@ public class PaymentProcessorAdapteeModule
         bind( new TypeLiteral<ListExecutorAdaptee<Transaction>>()
         {
         } ).to( TransactionAdaptee.class );
+
+        bind( new TypeLiteral<GetExecutorAdaptee<Category>>()
+        {
+        } ).to( CategoryAdaptee.class );
+
+        bind( new TypeLiteral<ListExecutorAdaptee<Category>>()
+        {
+        } ).to( CategoryAdaptee.class );
+
+        bind( new TypeLiteral<InsertExecutorAdaptee<Category>>()
+        {
+        } ).to( CategoryAdaptee.class );
+
+        bind( new TypeLiteral<UpdateExecutorAdaptee<Category>>()
+        {
+        } ).to( CategoryAdaptee.class );
+
+        bind( new TypeLiteral<DeleteExecutorAdaptee<Category>>()
+        {
+        } ).to( CategoryAdaptee.class );
     }
 }

@@ -70,7 +70,19 @@ public final class Transaction
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
+    private java.util.List<TransactionCategory> categories;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
     private com.google.api.client.util.DateTime completedAt;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private CounterpartyBankAccount counterparty;
 
     /**
      * The value may be {@code null}.
@@ -226,6 +238,23 @@ public final class Transaction
     /**
      * @return value or {@code null} for none
      */
+    public java.util.List<TransactionCategory> getCategories()
+    {
+        return categories;
+    }
+
+    /**
+     * @param categories categories or {@code null} for none
+     */
+    public Transaction setCategories( java.util.List<TransactionCategory> categories )
+    {
+        this.categories = categories;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
     public com.google.api.client.util.DateTime getCompletedAt()
     {
         return completedAt;
@@ -237,6 +266,23 @@ public final class Transaction
     public Transaction setCompletedAt( com.google.api.client.util.DateTime completedAt )
     {
         this.completedAt = completedAt;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public CounterpartyBankAccount getCounterparty()
+    {
+        return counterparty;
+    }
+
+    /**
+     * @param counterparty counterparty or {@code null} for none
+     */
+    public Transaction setCounterparty( CounterpartyBankAccount counterparty )
+    {
+        this.counterparty = counterparty;
         return this;
     }
 

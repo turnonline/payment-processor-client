@@ -162,6 +162,22 @@ public class PaymentProcessor
     }
 
     /**
+     * An accessor for creating requests from the Category collection.
+     *
+     * <p>The typical use is:</p>
+     * <pre>
+     *   {@code PaymentProcessor payment = new PaymentProcessor(...);}
+     *   {@code PaymentProcessor.Category.List request = payment.category().list(parameters ...)}
+     * </pre>
+     *
+     * @return the resource collection
+     */
+    public Category category()
+    {
+        return new Category();
+    }
+
+    /**
      * An accessor for creating requests from the Transactions collection.
      *
      * <p>The typical use is:</p>
@@ -784,19 +800,19 @@ public class PaymentProcessor
             private static final String REST_PATH = "bank-accounts";
 
             @com.google.api.client.util.Key
-            private java.lang.Integer offset;
+            private java.lang.String bank;
 
             @com.google.api.client.util.Key
-            private java.lang.String bank;
+            private java.lang.Integer offset;
 
             @com.google.api.client.util.Key
             private java.lang.Boolean alternative;
 
             @com.google.api.client.util.Key
-            private java.lang.String country;
+            private java.lang.Integer limit;
 
             @com.google.api.client.util.Key
-            private java.lang.Integer limit;
+            private java.lang.String country;
 
             /**
              * Create a request for the method "bank_accounts.list".
@@ -868,6 +884,20 @@ public class PaymentProcessor
             }
 
             /**
+             *
+             */
+            public java.lang.String getBank()
+            {
+                return bank;
+            }
+
+            public List setBank( java.lang.String bank )
+            {
+                this.bank = bank;
+                return this;
+            }
+
+            /**
              * [ default: 0]
              * [
              */
@@ -879,20 +909,6 @@ public class PaymentProcessor
             public List setOffset( java.lang.Integer offset )
             {
                 this.offset = offset;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.String getBank()
-            {
-                return bank;
-            }
-
-            public List setBank( java.lang.String bank )
-            {
-                this.bank = bank;
                 return this;
             }
 
@@ -941,20 +957,6 @@ public class PaymentProcessor
             }
 
             /**
-             *
-             */
-            public java.lang.String getCountry()
-            {
-                return country;
-            }
-
-            public List setCountry( java.lang.String country )
-            {
-                this.country = country;
-                return this;
-            }
-
-            /**
              * [ default: 10]
              * [
              */
@@ -966,6 +968,20 @@ public class PaymentProcessor
             public List setLimit( java.lang.Integer limit )
             {
                 this.limit = limit;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getCountry()
+            {
+                return country;
+            }
+
+            public List setCountry( java.lang.String country )
+            {
+                this.country = country;
                 return this;
             }
 
@@ -1551,6 +1567,528 @@ public class PaymentProcessor
     }
 
     /**
+     * The "category" collection of methods.
+     */
+    public class Category
+    {
+
+        /**
+         * Create a request for the method "category.delete".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Delete#execute()} method to invoke the remote operation.
+         *
+         * @param id
+         * @return the request
+         */
+        public Delete delete( java.lang.Long id ) throws java.io.IOException
+        {
+            Delete result = new Delete( id );
+            initialize( result );
+            return result;
+        }
+
+        /**
+         * Create a request for the method "category.get".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Get#execute()} method to invoke the remote operation.
+         *
+         * @param id
+         * @return the request
+         */
+        public Get get( java.lang.Long id ) throws java.io.IOException
+        {
+            Get result = new Get( id );
+            initialize( result );
+            return result;
+        }
+
+        /**
+         * Create a request for the method "category.insert".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Insert#execute()} method to invoke the remote operation.
+         *
+         * @param content the {@link biz.turnonline.ecosystem.payment.model.Category}
+         * @return the request
+         */
+        public Insert insert( biz.turnonline.ecosystem.payment.model.Category content ) throws java.io.IOException
+        {
+            Insert result = new Insert( content );
+            initialize( result );
+            return result;
+        }
+
+        /**
+         * Create a request for the method "category.list".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link List#execute()} method to invoke the remote operation.
+         *
+         * @return the request
+         */
+        public List list() throws java.io.IOException
+        {
+            List result = new List();
+            initialize( result );
+            return result;
+        }
+
+        /**
+         * Create a request for the method "category.update".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Update#execute()} method to invoke the remote operation.
+         *
+         * @param id
+         * @param content the {@link biz.turnonline.ecosystem.payment.model.Category}
+         * @return the request
+         */
+        public Update update( java.lang.Long id, biz.turnonline.ecosystem.payment.model.Category content )
+                throws java.io.IOException
+        {
+            Update result = new Update( id, content );
+            initialize( result );
+            return result;
+        }
+
+        public class Delete
+                extends PaymentProcessorRequest<Void>
+        {
+
+            private static final String REST_PATH = "categories/{id}";
+
+            @com.google.api.client.util.Key
+            private java.lang.Long id;
+
+            /**
+             * Create a request for the method "category.delete".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Delete#execute()} method to invoke the remote operation. <p> {@link
+             * Delete#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must
+             * be called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param id
+             * @since 1.13
+             */
+            protected Delete( java.lang.Long id )
+            {
+                super( PaymentProcessor.this, "DELETE", REST_PATH, null, Void.class );
+                this.id = com.google.api.client.util.Preconditions.checkNotNull( id, "Required parameter id must be specified." );
+            }
+
+            @Override
+            public Delete setAlt( java.lang.String alt )
+            {
+                return ( Delete ) super.setAlt( alt );
+            }
+
+            @Override
+            public Delete setFields( java.lang.String fields )
+            {
+                return ( Delete ) super.setFields( fields );
+            }
+
+            @Override
+            public Delete setKey( java.lang.String key )
+            {
+                return ( Delete ) super.setKey( key );
+            }
+
+            @Override
+            public Delete setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Delete ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Delete setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Delete ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Delete setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Delete ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Delete setUserIp( java.lang.String userIp )
+            {
+                return ( Delete ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getId()
+            {
+                return id;
+            }
+
+            public Delete setId( java.lang.Long id )
+            {
+                this.id = id;
+                return this;
+            }
+
+            @Override
+            public Delete set( String parameterName, Object value )
+            {
+                return ( Delete ) super.set( parameterName, value );
+            }
+        }
+
+        public class Get
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.Category>
+        {
+
+            private static final String REST_PATH = "categories/{id}";
+
+            @com.google.api.client.util.Key
+            private java.lang.Long id;
+
+            /**
+             * Create a request for the method "category.get".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Get#execute()} method to invoke the remote operation. <p> {@link
+             * Get#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be
+             * called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param id
+             * @since 1.13
+             */
+            protected Get( java.lang.Long id )
+            {
+                super( PaymentProcessor.this, "GET", REST_PATH, null, biz.turnonline.ecosystem.payment.model.Category.class );
+                this.id = com.google.api.client.util.Preconditions.checkNotNull( id, "Required parameter id must be specified." );
+            }
+
+            @Override
+            public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException
+            {
+                return super.executeUsingHead();
+            }
+
+            @Override
+            public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException
+            {
+                return super.buildHttpRequestUsingHead();
+            }
+
+            @Override
+            public Get setAlt( java.lang.String alt )
+            {
+                return ( Get ) super.setAlt( alt );
+            }
+
+            @Override
+            public Get setFields( java.lang.String fields )
+            {
+                return ( Get ) super.setFields( fields );
+            }
+
+            @Override
+            public Get setKey( java.lang.String key )
+            {
+                return ( Get ) super.setKey( key );
+            }
+
+            @Override
+            public Get setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Get ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Get setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Get ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Get setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Get ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Get setUserIp( java.lang.String userIp )
+            {
+                return ( Get ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getId()
+            {
+                return id;
+            }
+
+            public Get setId( java.lang.Long id )
+            {
+                this.id = id;
+                return this;
+            }
+
+            @Override
+            public Get set( String parameterName, Object value )
+            {
+                return ( Get ) super.set( parameterName, value );
+            }
+        }
+
+        public class Insert
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.Category>
+        {
+
+            private static final String REST_PATH = "categories";
+
+            /**
+             * Create a request for the method "category.insert".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Insert#execute()} method to invoke the remote operation. <p> {@link
+             * Insert#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must
+             * be called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param content the {@link biz.turnonline.ecosystem.payment.model.Category}
+             * @since 1.13
+             */
+            protected Insert( biz.turnonline.ecosystem.payment.model.Category content )
+            {
+                super( PaymentProcessor.this, "POST", REST_PATH, content, biz.turnonline.ecosystem.payment.model.Category.class );
+            }
+
+            @Override
+            public Insert setAlt( java.lang.String alt )
+            {
+                return ( Insert ) super.setAlt( alt );
+            }
+
+            @Override
+            public Insert setFields( java.lang.String fields )
+            {
+                return ( Insert ) super.setFields( fields );
+            }
+
+            @Override
+            public Insert setKey( java.lang.String key )
+            {
+                return ( Insert ) super.setKey( key );
+            }
+
+            @Override
+            public Insert setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Insert ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Insert setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Insert ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Insert setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Insert ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Insert setUserIp( java.lang.String userIp )
+            {
+                return ( Insert ) super.setUserIp( userIp );
+            }
+
+            @Override
+            public Insert set( String parameterName, Object value )
+            {
+                return ( Insert ) super.set( parameterName, value );
+            }
+        }
+
+        public class List
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.CategoryCollection>
+        {
+
+            private static final String REST_PATH = "categories";
+
+            /**
+             * Create a request for the method "category.list".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link List#execute()} method to invoke the remote operation. <p> {@link
+             * List#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be
+             * called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @since 1.13
+             */
+            protected List()
+            {
+                super( PaymentProcessor.this, "GET", REST_PATH, null, biz.turnonline.ecosystem.payment.model.CategoryCollection.class );
+            }
+
+            @Override
+            public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException
+            {
+                return super.executeUsingHead();
+            }
+
+            @Override
+            public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException
+            {
+                return super.buildHttpRequestUsingHead();
+            }
+
+            @Override
+            public List setAlt( java.lang.String alt )
+            {
+                return ( List ) super.setAlt( alt );
+            }
+
+            @Override
+            public List setFields( java.lang.String fields )
+            {
+                return ( List ) super.setFields( fields );
+            }
+
+            @Override
+            public List setKey( java.lang.String key )
+            {
+                return ( List ) super.setKey( key );
+            }
+
+            @Override
+            public List setOauthToken( java.lang.String oauthToken )
+            {
+                return ( List ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public List setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( List ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public List setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( List ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public List setUserIp( java.lang.String userIp )
+            {
+                return ( List ) super.setUserIp( userIp );
+            }
+
+            @Override
+            public List set( String parameterName, Object value )
+            {
+                return ( List ) super.set( parameterName, value );
+            }
+        }
+
+        public class Update
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.Category>
+        {
+
+            private static final String REST_PATH = "categories/{id}";
+
+            @com.google.api.client.util.Key
+            private java.lang.Long id;
+
+            /**
+             * Create a request for the method "category.update".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Update#execute()} method to invoke the remote operation. <p> {@link
+             * Update#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must
+             * be called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param id
+             * @param content the {@link biz.turnonline.ecosystem.payment.model.Category}
+             * @since 1.13
+             */
+            protected Update( java.lang.Long id, biz.turnonline.ecosystem.payment.model.Category content )
+            {
+                super( PaymentProcessor.this, "PUT", REST_PATH, content, biz.turnonline.ecosystem.payment.model.Category.class );
+                this.id = com.google.api.client.util.Preconditions.checkNotNull( id, "Required parameter id must be specified." );
+            }
+
+            @Override
+            public Update setAlt( java.lang.String alt )
+            {
+                return ( Update ) super.setAlt( alt );
+            }
+
+            @Override
+            public Update setFields( java.lang.String fields )
+            {
+                return ( Update ) super.setFields( fields );
+            }
+
+            @Override
+            public Update setKey( java.lang.String key )
+            {
+                return ( Update ) super.setKey( key );
+            }
+
+            @Override
+            public Update setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Update ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Update setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Update ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Update setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Update ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Update setUserIp( java.lang.String userIp )
+            {
+                return ( Update ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getId()
+            {
+                return id;
+            }
+
+            public Update setId( java.lang.Long id )
+            {
+                this.id = id;
+                return this;
+            }
+
+            @Override
+            public Update set( String parameterName, Object value )
+            {
+                return ( Update ) super.set( parameterName, value );
+            }
+        }
+
+    }
+
+    /**
      * The "transactions" collection of methods.
      */
     public class Transactions
@@ -1578,34 +2116,34 @@ public class PaymentProcessor
             private static final String REST_PATH = "transactions";
 
             @com.google.api.client.util.Key
+            private java.lang.Integer offset;
+
+            @com.google.api.client.util.Key
+            private com.google.api.client.util.DateTime to;
+
+            @com.google.api.client.util.Key
             private java.lang.Long orderId;
-
-            @com.google.api.client.util.Key
-            private java.lang.Long invoiceId;
-
-            @com.google.api.client.util.Key
-            private com.google.api.client.util.DateTime from;
-
-            @com.google.api.client.util.Key
-            private java.lang.Long accountId;
-
-            @com.google.api.client.util.Key
-            private java.lang.String type;
 
             @com.google.api.client.util.Key
             private java.lang.String operation;
 
             @com.google.api.client.util.Key
-            private java.lang.Integer limit;
+            private java.lang.Long invoiceId;
 
             @com.google.api.client.util.Key
-            private java.lang.Integer offset;
+            private java.lang.Long accountId;
 
             @com.google.api.client.util.Key
             private java.lang.String status;
 
             @com.google.api.client.util.Key
-            private com.google.api.client.util.DateTime to;
+            private com.google.api.client.util.DateTime from;
+
+            @com.google.api.client.util.Key
+            private java.lang.String type;
+
+            @com.google.api.client.util.Key
+            private java.lang.Integer limit;
 
             /**
              * Create a request for the method "transactions.list".
@@ -1677,6 +2215,35 @@ public class PaymentProcessor
             }
 
             /**
+             * [ default: 0]
+             * [
+             */
+            public java.lang.Integer getOffset()
+            {
+                return offset;
+            }
+
+            public List setOffset( java.lang.Integer offset )
+            {
+                this.offset = offset;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public com.google.api.client.util.DateTime getTo()
+            {
+                return to;
+            }
+
+            public List setTo( com.google.api.client.util.DateTime to )
+            {
+                this.to = to;
+                return this;
+            }
+
+            /**
              *
              */
             public java.lang.Long getOrderId()
@@ -1687,6 +2254,21 @@ public class PaymentProcessor
             public List setOrderId( java.lang.Long orderId )
             {
                 this.orderId = orderId;
+                return this;
+            }
+
+            /**
+             * [ default: both]
+             * [
+             */
+            public java.lang.String getOperation()
+            {
+                return operation;
+            }
+
+            public List setOperation( java.lang.String operation )
+            {
+                this.operation = operation;
                 return this;
             }
 
@@ -1707,20 +2289,6 @@ public class PaymentProcessor
             /**
              *
              */
-            public com.google.api.client.util.DateTime getFrom()
-            {
-                return from;
-            }
-
-            public List setFrom( com.google.api.client.util.DateTime from )
-            {
-                this.from = from;
-                return this;
-            }
-
-            /**
-             *
-             */
             public java.lang.Long getAccountId()
             {
                 return accountId;
@@ -1729,65 +2297,6 @@ public class PaymentProcessor
             public List setAccountId( java.lang.Long accountId )
             {
                 this.accountId = accountId;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.String getType()
-            {
-                return type;
-            }
-
-            public List setType( java.lang.String type )
-            {
-                this.type = type;
-                return this;
-            }
-
-            /**
-             * [ default: both]
-             * [
-             */
-            public java.lang.String getOperation()
-            {
-                return operation;
-            }
-
-            public List setOperation( java.lang.String operation )
-            {
-                this.operation = operation;
-                return this;
-            }
-
-            /**
-             * [ default: 20]
-             * [
-             */
-            public java.lang.Integer getLimit()
-            {
-                return limit;
-            }
-
-            public List setLimit( java.lang.Integer limit )
-            {
-                this.limit = limit;
-                return this;
-            }
-
-            /**
-             * [ default: 0]
-             * [
-             */
-            public java.lang.Integer getOffset()
-            {
-                return offset;
-            }
-
-            public List setOffset( java.lang.Integer offset )
-            {
-                this.offset = offset;
                 return this;
             }
 
@@ -1808,14 +2317,43 @@ public class PaymentProcessor
             /**
              *
              */
-            public com.google.api.client.util.DateTime getTo()
+            public com.google.api.client.util.DateTime getFrom()
             {
-                return to;
+                return from;
             }
 
-            public List setTo( com.google.api.client.util.DateTime to )
+            public List setFrom( com.google.api.client.util.DateTime from )
             {
-                this.to = to;
+                this.from = from;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getType()
+            {
+                return type;
+            }
+
+            public List setType( java.lang.String type )
+            {
+                this.type = type;
+                return this;
+            }
+
+            /**
+             * [ default: 20]
+             * [
+             */
+            public java.lang.Integer getLimit()
+            {
+                return limit;
+            }
+
+            public List setLimit( java.lang.Integer limit )
+            {
+                this.limit = limit;
                 return this;
             }
 
