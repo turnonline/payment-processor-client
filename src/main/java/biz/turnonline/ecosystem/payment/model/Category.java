@@ -31,13 +31,6 @@ public final class Category
         extends com.google.api.client.json.GenericJson
 {
 
-    static
-    {
-        // hack to force ProGuard to consider CategoryFilter used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( CategoryFilter.class );
-    }
-
     /**
      * The value may be {@code null}.
      */
@@ -49,6 +42,12 @@ public final class Category
      */
     @com.google.api.client.util.Key
     private java.util.List<CategoryFilter> filters;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.Long id;
 
     /**
      * The value may be {@code null}.
@@ -93,6 +92,23 @@ public final class Category
     public Category setFilters( java.util.List<CategoryFilter> filters )
     {
         this.filters = filters;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.Long getId()
+    {
+        return id;
+    }
+
+    /**
+     * @param id id or {@code null} for none
+     */
+    public Category setId( java.lang.Long id )
+    {
+        this.id = id;
         return this;
     }
 

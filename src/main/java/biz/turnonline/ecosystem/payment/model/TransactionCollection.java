@@ -30,12 +30,6 @@ package biz.turnonline.ecosystem.payment.model;
 public final class TransactionCollection
         extends com.google.api.client.json.GenericJson
 {
-    static
-    {
-        // hack to force ProGuard to consider Transaction used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( Transaction.class );
-    }
 
     /**
      * The value may be {@code null}.

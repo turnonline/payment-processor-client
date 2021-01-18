@@ -669,6 +669,48 @@
                 ]
             }
         },
+        "/v1/categories/transactions/{transactionId}": {
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "operationId": "listCategoriesForTransaction",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of categories for specified transaction.",
+                        "schema": {
+                            "$ref": "#/definitions/CategoryCollection"
+                        }
+                    },
+                    "401": {
+                        "description": "The error when the authentication credential fails.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "It's a failure of the server. The client can repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "The service is unavailable or the server has timed out processing of the request. The client may repeat the request without modifications at any later time.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "firebase-a9a2a51a": [
+                        ]
+                    }
+                ]
+            }
+        },
         "/v1/categories/{id}": {
             "get": {
                 "tags": [
@@ -1271,6 +1313,11 @@
                     "items": {
                         "$ref": "#/definitions/CategoryFilter"
                     }
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The unique category identification within service. Assigned by the service."
                 },
                 "name": {
                     "type": "string"
