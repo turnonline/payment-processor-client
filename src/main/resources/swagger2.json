@@ -1306,10 +1306,12 @@
             "type": "object",
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Hexadecimal color format used in UI (for instance as a background for label)"
                 },
                 "filters": {
                     "type": "array",
+                    "description": "Array of filters used to label transaction as a category",
                     "items": {
                         "$ref": "#/definitions/CategoryFilter"
                     }
@@ -1320,10 +1322,13 @@
                     "description": "The unique category identification within service. Assigned by the service."
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of category, used for human identification of category"
+
                 },
                 "propagate": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Flag which enable/disable notification propagation to pub/sub, i.e. to product-billing"
                 }
             }
         },
@@ -1343,6 +1348,7 @@
             "properties": {
                 "operation": {
                     "type": "string",
+                    "description": "Expected operation used between transaction field and expected property value",
                     "enum": [
                         "LT",
                         "LTE",
@@ -1354,6 +1360,7 @@
                 },
                 "propertyName": {
                     "type": "string",
+                    "description": "Expected transaction field name",
                     "enum": [
                         "NAME",
                         "AMOUNT",
@@ -1363,7 +1370,8 @@
                     ]
                 },
                 "propertyValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Expected field value"
                 }
             }
         },
