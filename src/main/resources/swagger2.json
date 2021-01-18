@@ -609,8 +609,7 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
             },
@@ -663,8 +662,7 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
             }
@@ -705,11 +703,20 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
-            }
+            },
+            "parameters": [
+                {
+                    "name": "transactionId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Transaction unique identification"
+                }
+            ]
         },
         "/v1/categories/{id}": {
             "get": {
@@ -760,8 +767,7 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
             },
@@ -827,8 +833,7 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
             },
@@ -877,8 +882,7 @@
                 },
                 "security": [
                     {
-                        "firebase-a9a2a51a": [
-                        ]
+                        "firebase-a9a2a51a": []
                     }
                 ]
             }
@@ -1324,7 +1328,6 @@
                 "name": {
                     "type": "string",
                     "description": "Name of category, used for human identification of category"
-
                 },
                 "propagate": {
                     "type": "boolean",
