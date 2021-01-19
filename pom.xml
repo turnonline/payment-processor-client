@@ -25,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-payment-processor-client</artifactId>
-    <version>0.17-SNAPSHOT</version>
+    <version>0.19-SNAPSHOT</version>
     <name>Payment Processor Java Client</name>
     <description>TurnOnline.biz Ecosystem Payment Processor REST API Java Client</description>
 
