@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,6 +36,7 @@ package biz.turnonline.ecosystem.payment;
  * @author Google, Inc.
  * @since 1.3
  */
+@SuppressWarnings( "javadoc" )
 public class PaymentProcessor
         extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClient
 {
@@ -800,19 +801,19 @@ public class PaymentProcessor
             private static final String REST_PATH = "bank-accounts";
 
             @com.google.api.client.util.Key
-            private java.lang.String bank;
-
-            @com.google.api.client.util.Key
             private java.lang.Integer offset;
 
             @com.google.api.client.util.Key
-            private java.lang.Boolean alternative;
+            private java.lang.String bank;
+
+            @com.google.api.client.util.Key
+            private java.lang.String country;
 
             @com.google.api.client.util.Key
             private java.lang.Integer limit;
 
             @com.google.api.client.util.Key
-            private java.lang.String country;
+            private java.lang.Boolean alternative;
 
             /**
              * Create a request for the method "bank_accounts.list".
@@ -884,6 +885,21 @@ public class PaymentProcessor
             }
 
             /**
+             * [ default: 0]
+             * [
+             */
+            public java.lang.Integer getOffset()
+            {
+                return offset;
+            }
+
+            public List setOffset( java.lang.Integer offset )
+            {
+                this.offset = offset;
+                return this;
+            }
+
+            /**
              *
              */
             public java.lang.String getBank()
@@ -898,17 +914,31 @@ public class PaymentProcessor
             }
 
             /**
-             * [ default: 0]
-             * [
+             *
              */
-            public java.lang.Integer getOffset()
+            public java.lang.String getCountry()
             {
-                return offset;
+                return country;
             }
 
-            public List setOffset( java.lang.Integer offset )
+            public List setCountry( java.lang.String country )
             {
-                this.offset = offset;
+                this.country = country;
+                return this;
+            }
+
+            /**
+             * [ default: 10]
+             * [
+             */
+            public java.lang.Integer getLimit()
+            {
+                return limit;
+            }
+
+            public List setLimit( java.lang.Integer limit )
+            {
+                this.limit = limit;
                 return this;
             }
 
@@ -953,35 +983,6 @@ public class PaymentProcessor
             public List setAlternative( java.lang.Boolean alternative )
             {
                 this.alternative = alternative;
-                return this;
-            }
-
-            /**
-             * [ default: 10]
-             * [
-             */
-            public java.lang.Integer getLimit()
-            {
-                return limit;
-            }
-
-            public List setLimit( java.lang.Integer limit )
-            {
-                this.limit = limit;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.String getCountry()
-            {
-                return country;
-            }
-
-            public List setCountry( java.lang.String country )
-            {
-                this.country = country;
                 return this;
             }
 
@@ -2235,6 +2236,22 @@ public class PaymentProcessor
     {
 
         /**
+         * Create a request for the method "transactions.get".
+         * <p>
+         * This request holds the parameters needed by the payment server.  After setting any optional
+         * parameters, call the {@link Get#execute()} method to invoke the remote operation.
+         *
+         * @param transactionId
+         * @return the request
+         */
+        public Get get( java.lang.Long transactionId ) throws java.io.IOException
+        {
+            Get result = new Get( transactionId );
+            initialize( result );
+            return result;
+        }
+
+        /**
          * Create a request for the method "transactions.list".
          * <p>
          * This request holds the parameters needed by the payment server.  After setting any optional
@@ -2249,6 +2266,107 @@ public class PaymentProcessor
             return result;
         }
 
+        public class Get
+                extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.Transaction>
+        {
+
+            private static final String REST_PATH = "transactions/{transaction_id}";
+
+            @com.google.api.client.util.Key( "transaction_id" )
+            private java.lang.Long transactionId;
+
+            /**
+             * Create a request for the method "transactions.get".
+             * <p>
+             * This request holds the parameters needed by the the payment server.  After setting any optional
+             * parameters, call the {@link Get#execute()} method to invoke the remote operation. <p> {@link
+             * Get#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be
+             * called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param transactionId
+             * @since 1.13
+             */
+            protected Get( java.lang.Long transactionId )
+            {
+                super( PaymentProcessor.this, "GET", REST_PATH, null, biz.turnonline.ecosystem.payment.model.Transaction.class );
+                this.transactionId = com.google.api.client.util.Preconditions.checkNotNull( transactionId, "Required parameter transactionId must be specified." );
+            }
+
+            @Override
+            public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException
+            {
+                return super.executeUsingHead();
+            }
+
+            @Override
+            public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException
+            {
+                return super.buildHttpRequestUsingHead();
+            }
+
+            @Override
+            public Get setAlt( java.lang.String alt )
+            {
+                return ( Get ) super.setAlt( alt );
+            }
+
+            @Override
+            public Get setFields( java.lang.String fields )
+            {
+                return ( Get ) super.setFields( fields );
+            }
+
+            @Override
+            public Get setKey( java.lang.String key )
+            {
+                return ( Get ) super.setKey( key );
+            }
+
+            @Override
+            public Get setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Get ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Get setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Get ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Get setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Get ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Get setUserIp( java.lang.String userIp )
+            {
+                return ( Get ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getTransactionId()
+            {
+                return transactionId;
+            }
+
+            public Get setTransactionId( java.lang.Long transactionId )
+            {
+                this.transactionId = transactionId;
+                return this;
+            }
+
+            @Override
+            public Get set( String parameterName, Object value )
+            {
+                return ( Get ) super.set( parameterName, value );
+            }
+        }
+
         public class List
                 extends PaymentProcessorRequest<biz.turnonline.ecosystem.payment.model.TransactionCollection>
         {
@@ -2256,34 +2374,34 @@ public class PaymentProcessor
             private static final String REST_PATH = "transactions";
 
             @com.google.api.client.util.Key
-            private java.lang.Long accountId;
-
-            @com.google.api.client.util.Key
-            private java.lang.String status;
-
-            @com.google.api.client.util.Key
-            private java.lang.Long invoiceId;
-
-            @com.google.api.client.util.Key
-            private com.google.api.client.util.DateTime from;
-
-            @com.google.api.client.util.Key
             private java.lang.Integer limit;
-
-            @com.google.api.client.util.Key
-            private java.lang.Integer offset;
 
             @com.google.api.client.util.Key
             private java.lang.String type;
 
             @com.google.api.client.util.Key
-            private java.lang.String operation;
+            private java.lang.String status;
+
+            @com.google.api.client.util.Key
+            private java.lang.Long accountId;
 
             @com.google.api.client.util.Key
             private java.lang.Long orderId;
 
             @com.google.api.client.util.Key
+            private java.lang.Long invoiceId;
+
+            @com.google.api.client.util.Key
+            private java.lang.String operation;
+
+            @com.google.api.client.util.Key
+            private java.lang.Integer offset;
+
+            @com.google.api.client.util.Key
             private com.google.api.client.util.DateTime to;
+
+            @com.google.api.client.util.Key
+            private com.google.api.client.util.DateTime from;
 
             /**
              * Create a request for the method "transactions.list".
@@ -2355,16 +2473,31 @@ public class PaymentProcessor
             }
 
             /**
-             *
+             * [ default: 20]
+             * [
              */
-            public java.lang.Long getAccountId()
+            public java.lang.Integer getLimit()
             {
-                return accountId;
+                return limit;
             }
 
-            public List setAccountId( java.lang.Long accountId )
+            public List setLimit( java.lang.Integer limit )
             {
-                this.accountId = accountId;
+                this.limit = limit;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.String getType()
+            {
+                return type;
+            }
+
+            public List setType( java.lang.String type )
+            {
+                this.type = type;
                 return this;
             }
 
@@ -2385,6 +2518,34 @@ public class PaymentProcessor
             /**
              *
              */
+            public java.lang.Long getAccountId()
+            {
+                return accountId;
+            }
+
+            public List setAccountId( java.lang.Long accountId )
+            {
+                this.accountId = accountId;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getOrderId()
+            {
+                return orderId;
+            }
+
+            public List setOrderId( java.lang.Long orderId )
+            {
+                this.orderId = orderId;
+                return this;
+            }
+
+            /**
+             *
+             */
             public java.lang.Long getInvoiceId()
             {
                 return invoiceId;
@@ -2397,31 +2558,17 @@ public class PaymentProcessor
             }
 
             /**
-             *
-             */
-            public com.google.api.client.util.DateTime getFrom()
-            {
-                return from;
-            }
-
-            public List setFrom( com.google.api.client.util.DateTime from )
-            {
-                this.from = from;
-                return this;
-            }
-
-            /**
-             * [ default: 20]
+             * [ default: both]
              * [
              */
-            public java.lang.Integer getLimit()
+            public java.lang.String getOperation()
             {
-                return limit;
+                return operation;
             }
 
-            public List setLimit( java.lang.Integer limit )
+            public List setOperation( java.lang.String operation )
             {
-                this.limit = limit;
+                this.operation = operation;
                 return this;
             }
 
@@ -2443,49 +2590,6 @@ public class PaymentProcessor
             /**
              *
              */
-            public java.lang.String getType()
-            {
-                return type;
-            }
-
-            public List setType( java.lang.String type )
-            {
-                this.type = type;
-                return this;
-            }
-
-            /**
-             * [ default: both]
-             * [
-             */
-            public java.lang.String getOperation()
-            {
-                return operation;
-            }
-
-            public List setOperation( java.lang.String operation )
-            {
-                this.operation = operation;
-                return this;
-            }
-
-            /**
-             *
-             */
-            public java.lang.Long getOrderId()
-            {
-                return orderId;
-            }
-
-            public List setOrderId( java.lang.Long orderId )
-            {
-                this.orderId = orderId;
-                return this;
-            }
-
-            /**
-             *
-             */
             public com.google.api.client.util.DateTime getTo()
             {
                 return to;
@@ -2494,6 +2598,20 @@ public class PaymentProcessor
             public List setTo( com.google.api.client.util.DateTime to )
             {
                 this.to = to;
+                return this;
+            }
+
+            /**
+             *
+             */
+            public com.google.api.client.util.DateTime getFrom()
+            {
+                return from;
+            }
+
+            public List setFrom( com.google.api.client.util.DateTime from )
+            {
+                this.from = from;
                 return this;
             }
 
