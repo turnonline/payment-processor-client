@@ -1531,6 +1531,47 @@
                 }
             }
         },
+        "ExchangeAmount": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The amount of the transaction."
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "IOS 4217 currency code."
+                }
+            }
+        },
+        "ExchangeRate": {
+            "type": "object",
+            "properties": {
+                "fee": {
+                    "description": "The fee for this transaction.",
+                    "$ref": "#/definitions/ExchangeAmount"
+                },
+                "from": {
+                    "description": "The amount and currency that exchanged from.",
+                    "$ref": "#/definitions/ExchangeAmount"
+                },
+                "rate": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The exchange rate for this transaction."
+                },
+                "rateDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date of the proposed exchange rate."
+                },
+                "to": {
+                    "description": "The amount and currency that exchanged to.",
+                    "$ref": "#/definitions/ExchangeAmount"
+                }
+            }
+        },
         "Merchant": {
             "type": "object",
             "properties": {
@@ -1591,6 +1632,10 @@
                 "currency": {
                     "type": "string",
                     "description": "The payment currency alphabetic code based on the ISO 4217."
+                },
+                "exchangeRate": {
+                    "$ref": "#/definitions/ExchangeRate",
+                    "description": "The conversion exchange rate, from original (bill amount) to new transaction amount."
                 },
                 "key": {
                     "type": "string",

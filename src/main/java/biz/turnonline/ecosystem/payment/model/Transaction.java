@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 TurnOnline.biz s.r.o.
+ * Copyright (c) 2021 TurnOnline.biz s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,6 +103,12 @@ public final class Transaction
      */
     @com.google.api.client.util.Key
     private java.lang.String currency;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private ExchangeRate exchangeRate;
 
     /**
      * The value may be {@code null}.
@@ -325,6 +331,23 @@ public final class Transaction
     public Transaction setCurrency( java.lang.String currency )
     {
         this.currency = currency;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public ExchangeRate getExchangeRate()
+    {
+        return exchangeRate;
+    }
+
+    /**
+     * @param exchangeRate exchangeRate or {@code null} for none
+     */
+    public Transaction setExchangeRate( ExchangeRate exchangeRate )
+    {
+        this.exchangeRate = exchangeRate;
         return this;
     }
 
