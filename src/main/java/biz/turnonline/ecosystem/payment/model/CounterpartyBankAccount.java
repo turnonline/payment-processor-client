@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 TurnOnline.biz s.r.o.
+ * Copyright (c) 2021 TurnOnline.biz s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,12 @@ public final class CounterpartyBankAccount
     private java.lang.String iban;
 
     /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.lang.String name;
+
+    /**
      * @return value or {@code null} for none
      */
     public java.lang.String getBic()
@@ -73,6 +79,23 @@ public final class CounterpartyBankAccount
     public CounterpartyBankAccount setIban( java.lang.String iban )
     {
         this.iban = iban;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.String getName()
+    {
+        return name;
+    }
+
+    /**
+     * @param name name or {@code null} for none
+     */
+    public CounterpartyBankAccount setName( java.lang.String name )
+    {
+        this.name = name;
         return this;
     }
 
